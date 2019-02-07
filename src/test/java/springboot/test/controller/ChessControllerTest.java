@@ -31,7 +31,7 @@ public class ChessControllerTest {
 		// After init, C4 does not contain any piece
 		board.move("Promethee", "C4", "C2");
 	}
-	
+
 	// Departure square must contain a piece
 	@Test(expected = MoveImpossibleException.class)
 	public void squaresExistOnTheBoard() throws Exception {
@@ -39,20 +39,20 @@ public class ChessControllerTest {
 		// The board does not contain C9 position nor I6
 		board.move("Promethee", "C9", "I6");
 	}
-	
+
 	@Test(expected = MoveImpossibleException.class)
 	public void sameSquare() throws Exception {
 		Board board = new Board("Promethee", "Epimethee");
 		// The board does not contain C9 position nor I6
 		board.move("Promethee", "A2", "A2");
 	}
-	
+
 	@Test
 	public void rookMove() throws Exception {
 		Board board = new Board("Promethee", "Epimethee");
 		board.setBoard(BoardBuilder.initializeTestPosition());
 		board.displayBoard();
-		
+
 		// Wrong moves
 		assertEquals(false, board.move("Promethee", "D4", "A4"));
 		assertEquals(false, board.move("Promethee", "D4", "G4"));
@@ -70,13 +70,13 @@ public class ChessControllerTest {
 		assertEquals(true, board.move("Promethee", "D4", "E4"));
 		assertEquals(true, board.move("Promethee", "D4", "D5"));
 	}
-	
+
 	@Test
 	public void bishopMove() throws Exception {
 		Board board = new Board("Promethee", "Epimethee");
 		board.setBoard(BoardBuilder.initializeTestPosition());
 		board.displayBoard();
-		
+
 		// Wrong moves
 		assertEquals(false, board.move("Promethee", "F5", "G4"));
 		assertEquals(false, board.move("Promethee", "F5", "H3"));
@@ -92,13 +92,13 @@ public class ChessControllerTest {
 		assertEquals(true, board.move("Promethee", "F5", "G6"));
 		assertEquals(true, board.move("Promethee", "F5", "E4"));
 	}
-	
+
 	@Test
 	public void queenMove() throws Exception {
 		Board board = new Board("Promethee", "Epimethee");
 		board.setBoard(BoardBuilder.initializeTestPosition());
 		board.displayBoard();
-		
+
 		// Wrong moves
 		assertEquals(false, board.move("Promethee", "E5", "F5"));
 		assertEquals(false, board.move("Promethee", "E5", "G5"));
@@ -126,47 +126,45 @@ public class ChessControllerTest {
 		assertEquals(true, board.move("Promethee", "E5", "F4"));
 
 	}
-	
+
 	@Test
 	public void knightMove() throws Exception {
 		Board board = new Board("Promethee", "Epimethee");
 		board.setBoard(BoardBuilder.initializeTestPosition());
 		board.displayBoard();
-		
+
 		// Wrong moves
 		assertEquals(false, board.move("Promethee", "F3", "H2"));
-		assertEquals(false, board.move("Promethee", "F3", "E1"));
 		assertEquals(false, board.move("Promethee", "F3", "D4"));
 		assertEquals(false, board.move("Promethee", "F3", "E5"));
 		assertEquals(false, board.move("Promethee", "F3", "A4"));
 		assertEquals(false, board.move("Promethee", "F3", "A3"));
 		assertEquals(false, board.move("Promethee", "F3", "B8"));
 
-
 		// Right moves
+		assertEquals(true, board.move("Promethee", "F3", "E1"));
 		assertEquals(true, board.move("Promethee", "F3", "H4"));
 		assertEquals(true, board.move("Promethee", "F3", "G1"));
 		assertEquals(true, board.move("Promethee", "F3", "D2"));
 		assertEquals(true, board.move("Promethee", "F3", "G5"));
 	}
-	
+
 	@Test
 	public void pawnMove() throws Exception {
 		Board board = new Board("Promethee", "Epimethee");
 		board.setBoard(BoardBuilder.initializeTestPosition());
 		board.displayBoard();
-		
+
 		// Wrong moves
 		// Pawn white can't go back
 		assertEquals(false, board.move("Promethee", "H2", "H1"));
 		assertEquals(false, board.move("Promethee", "G4", "G2"));
 		assertEquals(false, board.move("Promethee", "G4", "G3"));
 
-		
-		//Pawn black can't go back
+		// Pawn black can't go back
 		assertEquals(false, board.move("Promethee", "C4", "C5"));
 		assertEquals(false, board.move("Promethee", "G4", "C6"));
-		
+
 		assertEquals(false, board.move("Promethee", "D3", "D4"));
 		assertEquals(false, board.move("Promethee", "D3", "E4"));
 		assertEquals(false, board.move("Promethee", "D3", "A4"));
@@ -174,9 +172,8 @@ public class ChessControllerTest {
 		assertEquals(false, board.move("Promethee", "G4", "D2"));
 		assertEquals(false, board.move("Promethee", "H2", "H4"));
 
-
 		// Right moves
-		//Pawn black can't go back
+		// Pawn black can't go back
 		assertEquals(true, board.move("Promethee", "C4", "C3"));
 		assertEquals(true, board.move("Promethee", "D3", "C4"));
 		assertEquals(true, board.move("Promethee", "E2", "E3"));
@@ -184,7 +181,24 @@ public class ChessControllerTest {
 		assertEquals(true, board.move("Promethee", "H2", "H3"));
 		assertEquals(true, board.move("Promethee", "D3", "C4"));
 		assertEquals(true, board.move("Promethee", "B2", "B4"));
+	}
 
+	@Test
+	public void kingMove() throws Exception {
+		Board board = new Board("Promethee", "Epimethee");
+		board.setBoard(BoardBuilder.initializeTestPosition());
+		board.displayBoard();
 
+		// Wrong moves
+		assertEquals(false, board.move("Promethee", "G3", "F2"));
+		assertEquals(false, board.move("Promethee", "G3", "F3"));
+		assertEquals(false, board.move("Promethee", "G3", "G4"));
+		assertEquals(false, board.move("Promethee", "G3", "H2"));
+
+		// Right moves
+		assertEquals(true, board.move("Promethee", "G3", "H3"));
+		assertEquals(true, board.move("Promethee", "G3", "H4"));
+		assertEquals(true, board.move("Promethee", "G3", "F4"));
+		assertEquals(true, board.move("Promethee", "G3", "G2"));
 	}
 }

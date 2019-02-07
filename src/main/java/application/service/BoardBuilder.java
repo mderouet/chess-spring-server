@@ -72,7 +72,7 @@ public class BoardBuilder {
 		board.put("D3", new Pawn(Color.WHITE));
 		board.put("E3", null);
 		board.put("F3", new Knight(Color.WHITE));
-		board.put("G3", null);
+		board.put("G3", new King(Color.WHITE));
 		board.put("H3", null);
 
 		// Bottom line White
@@ -90,7 +90,7 @@ public class BoardBuilder {
 		board.put("B1", new Knight(Color.WHITE));
 		board.put("C1", new Bishop(Color.WHITE));
 		board.put("D1", null);
-		board.put("E1", new King(Color.WHITE));
+		board.put("E1", null);
 		board.put("F1", null);
 		board.put("G1", null);
 		board.put("H1", null);
