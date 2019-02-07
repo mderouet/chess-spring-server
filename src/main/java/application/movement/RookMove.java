@@ -12,10 +12,7 @@ public interface RookMove {
 	public default boolean lateralMove(Map<String, Piece> board, String squareCoordDeparture,
 			String squareCoordArrival) {
 
-		Color opponentColor = Color.BLACK;
-		if (board.get(squareCoordDeparture).getColor() == Color.BLACK) {
-			opponentColor = Color.WHITE;
-		}
+		Color opponentColor = board.get(squareCoordDeparture).opponentColor();
 
 		int[] yArray = { 1, 2, 3, 4, 5, 6, 7, 8 };
 		String[] xArray = { "A", "B", "C", "D", "E", "F", "G", "H" };

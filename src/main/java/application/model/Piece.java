@@ -13,6 +13,14 @@ public abstract class Piece {
 	public Color getColor() {
 		return color;
 	}
+	
+	public Color opponentColor() {
+		Color opponentColor = Color.WHITE;
+		if (this.getColor() == Color.WHITE) {
+			opponentColor = Color.BLACK;
+		}
+		return opponentColor;
+	}
 
 	public void setColor(Color color) {
 		this.color = color;

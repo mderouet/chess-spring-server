@@ -12,10 +12,7 @@ import application.utils.Utility;
 public interface BishopMove {
 	public default boolean diagonalMove(Map<String, Piece> board, String squareCoordDeparture,
 			String squareCoordArrival) {
-		Color opponentColor = Color.BLACK;
-		if (board.get(squareCoordDeparture).getColor() == Color.BLACK) {
-			opponentColor = Color.WHITE;
-		}
+		Color opponentColor = board.get(squareCoordDeparture).opponentColor();
 
 		List<Integer> yArray = new ArrayList<Integer>();
 		yArray.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
