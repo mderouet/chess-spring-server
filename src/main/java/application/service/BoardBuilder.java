@@ -19,14 +19,14 @@ public class BoardBuilder {
 
 		Map<String, Piece> board = new LinkedHashMap<>();
 		// Top line Black
-		board.put("A8", new Rook(Color.BLACK));
+		board.put("A8", new Pawn(Color.WHITE));
 		board.put("B8", new Knight(Color.BLACK));
 		board.put("C8", new Bishop(Color.BLACK));
 		board.put("D8", new Queen(Color.BLACK));
 		board.put("E8", new King(Color.BLACK));
 		board.put("F8", new Bishop(Color.BLACK));
 		board.put("G8", new Knight(Color.BLACK));
-		board.put("H8", null);
+		board.put("H8", new Rook(Color.BLACK));
 
 		// Bottom line Black
 		board.put("A7", null);
@@ -76,7 +76,7 @@ public class BoardBuilder {
 		board.put("H3", null);
 
 		// Bottom line White
-		board.put("A2", new Pawn(Color.WHITE));
+		board.put("A2", null);
 		board.put("B2", new Pawn(Color.WHITE));
 		board.put("C2", new Pawn(Color.WHITE));
 		board.put("D2", null);
