@@ -138,11 +138,39 @@ public class ChessControllerTest {
 		assertEquals(false, board.move("David", "F3", "E1"));
 		assertEquals(false, board.move("David", "F3", "D4"));
 		assertEquals(false, board.move("David", "F3", "E5"));
+		assertEquals(false, board.move("David", "F3", "A4"));
+		assertEquals(false, board.move("David", "F3", "A3"));
+		assertEquals(false, board.move("David", "F3", "B8"));
+
 
 		// Right moves
 		assertEquals(true, board.move("David", "F3", "H4"));
 		assertEquals(true, board.move("David", "F3", "G1"));
 		assertEquals(true, board.move("David", "F3", "D2"));
 		assertEquals(true, board.move("David", "F3", "G5"));
+	}
+	
+	@Test
+	public void pawnMove() throws Exception {
+		Board board = new Board("David", "Goliath");
+		board.setBoard(BoardBuilder.initializeTestPosition());
+		board.displayBoard();
+		
+		// Wrong moves
+		assertEquals(false, board.move("David", "D3", "D4"));
+		assertEquals(false, board.move("David", "D3", "E4"));
+		assertEquals(false, board.move("David", "D3", "D4"));
+		assertEquals(true, board.move("David", "H2", "H4"));
+		assertEquals(true, board.move("David", "D3", "A4"));
+		assertEquals(true, board.move("David", "D3", "A3"));
+
+
+		// Right moves
+		assertEquals(true, board.move("David", "D3", "C4"));
+		assertEquals(true, board.move("David", "E2", "E3"));
+		assertEquals(true, board.move("David", "E2", "E4"));
+		assertEquals(true, board.move("David", "H2", "H3"));
+		assertEquals(true, board.move("David", "D2", "C4"));
+
 	}
 }
