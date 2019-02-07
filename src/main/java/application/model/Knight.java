@@ -66,7 +66,8 @@ public class Knight extends Piece {
 			movePossible = true;
 		}
 
-		// The square arrival must be in the position reachable by the knight and also,
+		// The square arrival must be in the position reachable by the knight && (square
+		// empty || opponent piece)
 		return positionReachableByKnight.contains(squareCoordArrival) && movePossible;
 	}
 }
