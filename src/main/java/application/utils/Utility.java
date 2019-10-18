@@ -11,5 +11,4 @@ public class Utility {
 	public static String getLetterFromNumber(String move) {
 		return CharMatcher.inRange('a', 'z').or(CharMatcher.inRange('A', 'Z')).retainFrom(move);
 	}
-
 }
