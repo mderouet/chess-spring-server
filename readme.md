@@ -7,3 +7,5 @@ Depending to the couple "Departure Position && Arrival position" asked by the cl
 
 My rook is A2, and the client want to move this rook to H2 :
 Then the direction we need to check is obviously the right, then, check whether there are pieces in it, if it's friendly pieces etc..
+
+And reorganise packages
