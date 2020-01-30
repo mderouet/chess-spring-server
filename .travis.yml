@@ -1,5 +1,5 @@
 language: java
 jdk:
-    - oraclejdk11
+  - oraclejdk11
 after_success:
-    - bash <(curl -s --retry 10 https://codecov.io/bash)
+  - bash <(curl -s --retry 10 https://codecov.io/bash)

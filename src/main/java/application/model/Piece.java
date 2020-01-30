@@ -4,29 +4,27 @@ import java.util.Map;
 
 public abstract class Piece {
 
-	private Color color;
+    private Color color;
 
-	public Piece(Color color) {
-		this.color = color;
-	}
+    public Piece(Color color) {
+        this.color = color;
+    }
 
-	public Color getColor() {
-		return color;
-	}
-	
-	public Color opponentColor() {
-		Color opponentColor = Color.WHITE;
-		if (this.getColor() == Color.WHITE) {
-			opponentColor = Color.BLACK;
-		}
-		return opponentColor;
-	}
+    public Color getColor() {
+        return color;
+    }
 
-	public void setColor(Color color) {
-		this.color = color;
-	}
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
-	public abstract String getLetter();
+    public Color opponentColor() {
+        return this.getColor() == Color.WHITE ? Color.BLACK : Color.WHITE;
+    }
 
-	public abstract boolean move(Map<String, Piece> board, String piecePosition, String pieceArrivalPosition);
+    public abstract String getLetter();
+
+    public abstract String getPieceName();
+
+    public abstract boolean move(Map<String, Piece> board, String piecePosition, String pieceArrivalPosition);
 }

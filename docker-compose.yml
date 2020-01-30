@@ -1,0 +1,6 @@
+mongodb:
+  image: mongo
+  restart: always
+  container_name: mongodb-chess
+  ports:
+    - 27017:27017

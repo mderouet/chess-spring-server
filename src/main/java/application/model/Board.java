@@ -1,28 +1,35 @@
 package application.model;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotEmpty;
 import java.util.Map;
-import application.exception.MoveImpossibleException;
-import application.exception.NotYourTurnException;
-import application.service.BoardService;
-import lombok.*;
 
 @Getter
 @Setter
+@Document(collection = "board")
+@Builder
 public class Board {
 
-	private BoardService boardService = new BoardService();
+    @Id
+    private final String id;
 
-	private int id;
-	private String whitePlayerName;
-	private String blackPlayerName;
-	private boolean whiteTurnToPlay = true;
-	private Map<String, Piece> board;
+    @NotEmpty
+    private final String whitePlayerName;
+    @NotEmpty
+    private final String blackPlayerName;
 
-	@Builder
-	public Board(int id, String whitePlayerName, String blackPlayerName) {
-		this.board = boardService.initialize();
-		this.id = id;
-		this.whitePlayerName = whitePlayerName;
-		this.blackPlayerName = blackPlayerName;
-	}
+    private boolean whiteTurnToPlay;
+    private Map<String, Piece> chessBoard;
+
+    public String getPlayerNameByColor(Color color) {
+        if (color.equals(Color.WHITE)) {
+            return whitePlayerName;
+        }
+        return blackPlayerName;
+    }
 }
