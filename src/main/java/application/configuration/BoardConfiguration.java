@@ -9,13 +9,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BoardConfiguration {
 
-  @Bean
-  BoardManagementService boardManagement(){
-    return new BoardManagementService();
-  }
+    @Bean
+    BoardManagementService boardManagement() {
+        return new BoardManagementService();
+    }
 
-  @Bean
-  BoardService boardService(){
-    return new BoardServiceImpl();
-  }
+    @Bean
+    BoardService boardService() {
+        return new BoardServiceImpl();
+    }
 }
