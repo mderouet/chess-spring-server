@@ -1,3 +1,7 @@
+
+chess:
+  name: SpringChessServerApplication
+
 spring:
   data:
     mongodb:

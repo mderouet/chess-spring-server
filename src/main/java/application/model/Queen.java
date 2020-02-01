@@ -25,7 +25,6 @@ public class Queen extends Piece implements RookMove, BishopMove {
 
     @Override
     public boolean move(Map<String, Piece> board, String queenPosition, String queenArrivalPosition) {
-        log.info("Moving like the Queen");
         // The queen move pretty much like rook + bishop (lateral + diagonal)
         // If diagonal or lateral function reveal that this move is allowed, then the
         // queen can move

@@ -5,6 +5,9 @@ import application.service.BoardManagementService;
 import application.service.BoardService;
 import application.util.Utils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,7 +40,7 @@ public class ChessController {
         return newBoard;
     }
 
-    @GetMapping(value = "/boardStatus", produces = "application/json")
+    @GetMapping(value = "/status", produces = "application/json")
     public Optional<Board> boardStatus(@RequestParam String id) {
         return boardService.findBoardById(id);
     }

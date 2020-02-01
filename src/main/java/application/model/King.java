@@ -24,8 +24,6 @@ public class King extends Piece {
 
     @Override
     public boolean move(Map<String, Piece> board, String squareCoordDeparture, String squareCoordArrival) {
-        log.info("Moving like the king");
-
         Color myColor = board.get(squareCoordDeparture).getColor();
 
         List<String> positionReachableByKing = new ArrayList<>();

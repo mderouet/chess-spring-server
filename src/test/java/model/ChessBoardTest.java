@@ -8,12 +8,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {BoardManagementService.class})
-public class ChessBoardTest {
+class ChessBoardTest {
 
     private Board board;
 
@@ -21,7 +22,7 @@ public class ChessBoardTest {
     private BoardManagementService boardManagementService;
 
     @BeforeEach
-    public void init() {
+    void init() {
         board = boardManagementService.initialize(Board.builder()
                 .whitePlayerName("Promethee")
                 .blackPlayerName("Epimethee")
@@ -31,7 +32,7 @@ public class ChessBoardTest {
 
     // First turn white can play
     @Test
-    public void whiteTurnToPlay() {
+    void whiteTurnToPlay() {
         Assertions.assertThrows(NotYourTurnException.class, () -> {
             boardManagementService.move(board, "Epimethee", "C1", "C2");
         });
@@ -39,7 +40,7 @@ public class ChessBoardTest {
 
     // Player name does not exist
     @Test
-    public void playerName() {
+    void playerName() {
         Assertions.assertThrows(NotYourTurnException.class, () -> {
             boardManagementService.move(board, "Epimethee", "C1", "C2");
         });
@@ -47,7 +48,7 @@ public class ChessBoardTest {
 
     // Departure square must contain a piece
     @Test
-    public void departurePieceExist() {
+    void departurePieceExist() {
         Assertions.assertThrows(NoDeparturePieceException.class, () -> {
             // After init, C4 does not contain any piece
             boardManagementService.move(board, "Promethee", "C4", "C2");
@@ -56,7 +57,7 @@ public class ChessBoardTest {
 
     // Coords must be existing on the board
     @Test
-    public void squaresExistOnTheBoard() {
+    void squaresExistOnTheBoard() {
         Assertions.assertThrows(OutOfBoardException.class, () -> {
             // The chessBoard does not contain C9 position nor I6
             boardManagementService.move(board, "Promethee", "C9", "I6");
@@ -64,7 +65,7 @@ public class ChessBoardTest {
     }
 
     @Test
-    public void sameSquare() {
+    void sameSquare() {
         Assertions.assertThrows(SameSquareException.class, () -> {
             // The chessBoard does not contain C9 position nor I6
             boardManagementService.move(board, "Promethee", "A2", "A2");
@@ -72,7 +73,7 @@ public class ChessBoardTest {
     }
 
     @Test
-    public void whitePlayerMoveBlackPiece() {
+    void whitePlayerMoveBlackPiece() {
         Assertions.assertThrows(NotYourPieceException.class, () -> {
             boardManagementService.move(board, "Promethee", "A7", "A5");
         });

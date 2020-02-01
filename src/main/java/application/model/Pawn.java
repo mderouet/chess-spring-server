@@ -24,14 +24,12 @@ public class Pawn extends Piece {
 
     @Override
     public boolean move(Map<String, Piece> board, String squareCoordDeparture, String squareCoordArrival) {
-        log.info("Je bouge comme un pion");
-
         // A pawn can only go forward we need the color in order to know whether we are
         // going forward or not
 
         Color myColor = board.get(squareCoordDeparture).getColor();
 
-        List<String> xArray = new ArrayList<String>(Arrays.asList("--A", "-A", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"));
+        List<String> xArray = new ArrayList<>(Arrays.asList("--A", "-A", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"));
 
         String xCoord = Utils.getLetterFromNumber(squareCoordDeparture);
         int yCoord = Utils.getNumberFromString(squareCoordDeparture);

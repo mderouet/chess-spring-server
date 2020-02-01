@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.util.Assert;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,23 +21,23 @@ import java.util.Map;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {BoardManagementService.class})
 class PieceMovementTest {
-    private final String WHITE_PLAYER_NAME = "Promethee";
-    private final String BLACK_PLAYER_NAME = "Epimethee";
-    @Autowired
-    public BoardManagementService boardManagementService = new BoardManagementService();
+
     private Board board;
 
-    public void initBoard(boolean whiteTurnToPlay) {
+    @Autowired
+    public BoardManagementService boardManagementService;
+
+    private void initBoard(boolean whiteTurnToPlay) {
         board = boardManagementService.initializeCustomPosition(Board.builder()
-                .whitePlayerName(WHITE_PLAYER_NAME)
-                .blackPlayerName(BLACK_PLAYER_NAME)
+                .whitePlayerName("Promethee")
+                .blackPlayerName("Epimethee")
                 .whiteTurnToPlay(whiteTurnToPlay)
                 .build()
         );
     }
 
     @Test
-    public void rookMove() {
+    void rookMove() {
         // Wrong moves
         Map<String, List<String>> wrongMoveMap = new HashMap<>();
         wrongMoveMap.put("D4", List.of("A4", "G4", "G5", "A3", "A5", "D8", "D7", "D3"));
@@ -49,7 +50,7 @@ class PieceMovementTest {
     }
 
     @Test
-    public void bishopMove() {
+    void bishopMove() {
         // Wrong moves
         Map<String, List<String>> wrongMoveMap = new HashMap<>();
         wrongMoveMap.put("F5", List.of("G4", "H3", "D3", "C2", "C3", "H7"));
@@ -62,7 +63,7 @@ class PieceMovementTest {
     }
 
     @Test
-    public void queenMove() {
+    void queenMove() {
 
         // Wrong moves
         Map<String, List<String>> wrongMoveMap = new HashMap<>();
@@ -76,7 +77,7 @@ class PieceMovementTest {
     }
 
     @Test
-    public void knightMove() {
+    void knightMove() {
 
         // Wrong moves
         Map<String, List<String>> wrongMoveMap = new HashMap<>();
@@ -90,7 +91,7 @@ class PieceMovementTest {
     }
 
     @Test
-    public void pawnMove() {
+    void pawnMove() {
         // Wrong moves
         Map<String, List<String>> wrongMoveWhitePieceMap = new HashMap<>();
         wrongMoveWhitePieceMap.put("H2", List.of("H1", "H4"));
@@ -116,7 +117,7 @@ class PieceMovementTest {
     }
 
     @Test
-    public void kingMove() {
+    void kingMove() {
         // Wrong moves
         Map<String, List<String>> wrongMoveMap = new HashMap<>();
         wrongMoveMap.put("G3", List.of("F2", "F3", "G4", "H2"));
@@ -142,7 +143,6 @@ class PieceMovementTest {
             });
         }));
     }
-
 
     private void checkRightMoves(Map<String, List<String>> positions) {
         checkRightMoves(positions, true);

@@ -232,10 +232,7 @@ public class BoardManagementService {
     public void displayBoard(Map<String, Piece> boardPositions) {
         String line = " [";
         int index = 0;
-        Iterator<Map.Entry<String, Piece>> it = boardPositions.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<String, Piece> currentPair = it.next();
-
+        for (Map.Entry<String, Piece> currentPair : boardPositions.entrySet()) {
             if (currentPair.getValue() != null) {
                 line += " " + currentPair.getValue().getLetter() + " , ";
             } else {
